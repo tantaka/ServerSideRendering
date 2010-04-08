@@ -1,0 +1,10 @@
+server:
+  max_connections: 100
+  safe_resolver: false      # require 'resolv-replace'するかどうか。Windowsはtrueにしたほうが安全、Macはfalseにしたほうが安全、UNIXはfalseの方が速いと思う
+  policy_file_request: true # <policy-file-request/>要求に答える（Flashでクロスドメイン処理を行う）
+  daemon: true # daemonモード
+
+network:
+  host: localhost
+  port: 15000
+

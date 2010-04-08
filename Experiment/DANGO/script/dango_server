@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+CanReadOptionServer = %w(host max_connections log_file log_level log_max_size log_shift_age gserver_log_file no_start_log daemon)
+CanReadOptionNetwork = %w(host port)
+
+# コマンドラインオプション取得とコンフィグの上書き
+require 'getoptlong.rb'
+opt_parser = GetoptLong.new
+
+options_arr = []
+#config["server"].each{|k, v| options_arr.push("server:#{k}") }
+#config["network"].each{|k, v| options_arr.push("network:#{k}") }
+CanReadOptionServer.each{|k, v| options_arr.push("server:#{k}") }
+CanReadOptionNetwork.each{|k, v| options_arr.push("network:#{k}") }
+
+options_set_options = options_arr.uniq.collect{|o| ["--#{o}", GetoptLong::OPTIONAL_ARGUMENT] }
+options_set_options << ["--dango", GetoptLong::OPTIONAL_ARGUMENT]
+options_set_options << ["-e", GetoptLong::OPTIONAL_ARGUMENT]
+
+opt_parser.set_options(*options_set_options)
+
+start_options = {}
+opt_parser.each_option{|n,a| start_options[n] = a}
+
+
+# 環境によるコンフィグ読み込み
+require "yaml"
+ENV['RAILS_ENV'] = start_options['-e'] if start_options['-e']
+env = ENV['RAILS_ENV'] || 'development'
+config_file = "config/dango/#{env}.yml"
+puts "loading config file:#{config_file}"
+config = YAML.load(open(config_file, "rb"){|fh| fh.read})
+
+# rubygems
+require 'rubygems'
+
+# コマンドラインでdangoのバージョン指定があればそのバージョンを使う
+if start_options['--dango'] && start_options['--dango'] != ""
+  puts "loading dango version = #{start_options['--dango']}"
+  gem 'dango', "= #{start_options['--dango']}"
+end
+
+puts "Booting DangoServer..."
+require File.dirname(__FILE__) + '/../config/boot'
+
+require 'dango/script/dango_server'
+ScriptDangoServer.new(config, start_options)
+

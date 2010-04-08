@@ -1,0 +1,33 @@
+package {
+    import flash.display.*;
+    import flash.events.*;
+    import flash.media.*;
+    import flash.net.*;
+    public class WebCamPlayback extends Sprite {
+        public function WebCamPlayback() {
+
+            var nc:NetConnection = new NetConnection();
+            nc.addEventListener(NetStatusEvent.NET_STATUS, function(e:NetStatusEvent):void{
+                if(e.info.code != 'NetConnection.Connect.Success') return;
+
+                var ns:NetStream = new NetStream(nc);
+
+                var v:Video = new Video(320, 240);
+                v.attachNetStream(ns);
+                v.smoothing = true;
+                stage.addChild(v);
+
+                ns.client = { onMetaData: function(o:Object):void{} };
+                ns.addEventListener(NetStatusEvent.NET_STATUS, function(e:NetStatusEvent):void{
+                    if(e.info.code != 'NetStream.Play.Stop') return;
+
+                    ns.close();
+                    v.attachNetStream(null);
+                    stage.removeChild(v);
+                });
+                ns.play('video');
+            });
+            nc.connect('rtmp://localhost/TestRed5');
+        }
+    }
+}

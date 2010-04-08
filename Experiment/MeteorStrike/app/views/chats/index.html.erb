@@ -1,0 +1,11 @@
+<!-- form to input message -->
+<%= render_component :action => 'new' %>
+<!-- message list-->
+<ul id="chat-list">
+<% for chat in @chats %>
+<%= render_component :action => 'show', :id => chat.id %>
+<% end %>
+</ul>
+<!-- generate js script to connect with ShootingStar -->
+<!-- 'shot_chat' is the name of the connection channel -->
+<%= meteor_strike 'shot_chat' %>

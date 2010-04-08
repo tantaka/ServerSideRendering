@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SWFObject embed by Geoff Stearns (basic) @ deconcept</title>
+<!-- SWFObject embed by Geoff Stearns geoff@deconcept.com http://blog.deconcept.com/swfobject/ -->
+<script type="text/javascript" src="swfobject.js"></script>
+<style type="text/css">
+
+    body {
+        background-color: #eeeeee;
+        font: .8em/1.3em verdana,arial,helvetica,sans-serif;
+    }
+
+    #info {
+        width: 300px;
+        overflow: auto;
+    }
+
+    #flashcontent {
+        border: solid 1px #000;
+        width: 300px;
+        height: 300px;
+        float: left;
+        margin: 15px 20px;
+    }
+
+</style>
+</head>
+<body>
+
+    <div id="flashcontent">
+
+        <strong>You need to upgrade your Flash Player</strong>
+        This is replaced by the Flash content.
+        Place your alternate content here and users without the Flash plugin or with
+        Javascript turned off will see this. Content here allows you to leave out <code>noscript</code>
+        tags. Include a link to <a href="swfobject.html?detectflash=false">bypass the detection</a> if you wish.
+    </div>
+
+    <script type="text/javascript">
+        // <![CDATA[
+
+        var so = new SWFObject("SampleChat.swf", "sotester", "800", "600", "9", "#FF6600");
+        so.addVariable("flashVarText", "this is passed in via FlashVars for example only"); // this line is optional, but this example uses the variable and displays this text inside the flash movie
+        so.write("flashcontent");
+
+        // ]]>
+    </script>
+
+</body>
+</html>

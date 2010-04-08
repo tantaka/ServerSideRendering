@@ -1,0 +1,5 @@
+<% form_remote_for(:chat, :url => chats_path) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :message %>
+  <%= submit_tag "Talk" %>
+<% end %>

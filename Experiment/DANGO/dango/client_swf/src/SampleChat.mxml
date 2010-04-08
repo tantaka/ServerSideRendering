@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" applicationComplete="app_complete();">
+  <mx:TextInput x="10" y="10" id="text_input"/>
+  <mx:TextArea x="10" y="40" width="416" height="350" id="text_area"/>
+  <mx:Button x="178" y="10" label="送信" click="click();"/>
+
+  <mx:Script>
+    <![CDATA[
+      private var sample_chat_base:SampleChatBase;
+
+      //dango通信用オブジェクト初期化
+      private function app_complete():void {
+        sample_chat_base = new SampleChatBase(this);
+      }
+
+      //送信ボタンクリック時の処理
+      private function click():void {
+        sample_chat_base.send_message(text_input.text);
+        text_input.text = '';
+      }
+
+      //サーバーから届いたチャットログをテキストエリアに追加する
+      public function add_text_log(add_text:String):void {
+        text_area.text = add_text + "\n" + text_area.text;
+      }
+    ]]>
+  </mx:Script>
+</mx:Application>

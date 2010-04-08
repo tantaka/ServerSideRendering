@@ -1,0 +1,39 @@
+shooting_star service started.
+shooting_star service stopped.
+shooting_star service started.
+Channel opened: shot_chat
+Event(1265815693232565): shot_chat:{:tag=>[], :event=>:enter, :uid=>nil}
+Connected: 
+Wait for: shot_chat::[]:1265815692531420
+Shot: shot_chat:1::
+Event(1265815801346475): shot_chat:{:tag=>[], :event=>:leave, :uid=>nil}
+Disconnected: :1265815692531420
+Channel closed: shot_chat
+Channel opened: shot_chat
+Event(1265815801719645): shot_chat:{:tag=>[], :event=>:enter, :uid=>nil}
+Connected: 
+Wait for: shot_chat::[]:1265815801135679
+Shot: shot_chat:2::
+Event(1265815855764914): shot_chat:{:tag=>[], :event=>:enter, :uid=>nil}
+Connected: 
+Wait for: shot_chat::[]:1265815853146816
+Shot: shot_chat:3::
+Shot: shot_chat:4::
+Event(1265816408523428): shot_chat:{:tag=>[], :event=>:leave, :uid=>nil}
+Disconnected: :1265815853146816
+Event(1265816785522811): shot_chat:{:tag=>[], :event=>:leave, :uid=>nil}
+Disconnected: :1265815801135679
+Channel closed: shot_chat
+shooting_star service started.
+Channel opened: shot_chat
+Event(1265862249408741): shot_chat:{:tag=>[], :event=>:enter, :uid=>nil}
+Connected: 
+Wait for: shot_chat::[]:1265862248782611
+Event(1265862275955055): shot_chat:{:tag=>[], :event=>:enter, :uid=>nil}
+Connected: 
+Wait for: shot_chat::[]:1265862274799004
+Shot: shot_chat:5::
+Shot: shot_chat:6::
+Shot: shot_chat:7::
+Shot: shot_chat:8::
+shooting_star service stopped.

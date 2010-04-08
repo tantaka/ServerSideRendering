@@ -1,0 +1,205 @@
+
+DEPRECATION WARNING: unverifiable_types is deprecated and has no effect. (called from /Users/tantaka/Dropbox/サーバーサイドベクトル化/prototype/rubyamf/vendor/plugins/rubyamf/app/mime_type.rb:3)
+DEPRECATION WARNING: unverifiable_types is deprecated and has no effect. (called from /Users/tantaka/Dropbox/サーバーサイドベクトル化/prototype/rubyamf/vendor/plugins/rubyamf/app/mime_type.rb:3)
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateMessages (20100105230309)
+  [4;36;1mSQL (1.6ms)[0m   [0;1mCREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100105230309')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("messages")[0m
+DEPRECATION WARNING: unverifiable_types is deprecated and has no effect. (called from /Users/tantaka/Dropbox/サーバーサイドベクトル化/prototype/rubyamf/vendor/plugins/rubyamf/app/mime_type.rb:3)
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-01-06 08:03:59) [GET]
+Sending data 
+Completed in 1ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-01-06 08:05:06) [GET]
+Sending data 
+Completed in 1ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing MessagesController#index (for 127.0.0.1 at 2010-01-06 08:05:23) [GET]
+  [4;36;1mMessage Load (0.3ms)[0m   [0;1mSELECT * FROM "messages" [0m
+Rendering template within layouts/messages
+Rendering messages/index
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/messages]
+
+
+Processing MessagesController#new (for 127.0.0.1 at 2010-01-06 08:05:54) [GET]
+Rendering template within layouts/messages
+Rendering messages/new
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/messages/new]
+
+
+Processing MessagesController#create (for 127.0.0.1 at 2010-01-06 08:06:03) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"a7c0991f47c1f22fe5d089ab3ef1519faeaa2669", "message"=>{"text"=>"first message"}}
+  [4;35;1mMessage Create (0.8ms)[0m   [0mINSERT INTO "messages" ("created_at", "updated_at", "text") VALUES('2010-01-05 23:06:03', '2010-01-05 23:06:03', 'first message')[0m
+Redirected to #<Message:0x103ea5ef8>
+Completed in 9ms (DB: 1) | 302 Found [http://localhost/messages]
+
+
+Processing MessagesController#show (for 127.0.0.1 at 2010-01-06 08:06:03) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMessage Load (0.2ms)[0m   [0;1mSELECT * FROM "messages" WHERE ("messages"."id" = 1) [0m
+Rendering template within layouts/messages
+Rendering messages/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/messages/1]
+
+
+Processing MessagesController#index (for 127.0.0.1 at 2010-01-06 08:06:06) [GET]
+  [4;35;1mMessage Load (0.4ms)[0m   [0mSELECT * FROM "messages" [0m
+Rendering template within layouts/messages
+Rendering messages/index
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/messages]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-01-08 01:49:04) [POST]
+Sending data 
+Completed in 5ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+DEPRECATION WARNING: unverifiable_types is deprecated and has no effect. (called from /Users/tantaka/Dropbox/サーバーサイドベクトル化/prototype/rubyamf/vendor/plugins/rubyamf/app/mime_type.rb:3)
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-01-08 07:27:39) [GET]
+Sending data 
+Completed in 1ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-01-08 07:27:47) [GET]
+Sending data 
+Completed in 2ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-01-08 07:28:06) [POST]
+Sending data 
+Completed in 5ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+DEPRECATION WARNING: unverifiable_types is deprecated and has no effect. (called from /Users/tantaka/Dropbox/サーバーサイドベクトル化/prototype/rubyamf/vendor/plugins/rubyamf/app/mime_type.rb:3)
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-01-31 20:25:40) [GET]
+Sending data 
+Completed in 2ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+DEPRECATION WARNING: unverifiable_types is deprecated and has no effect. (called from /Users/tantaka/Dropbox/サーバーサイドベクトル化/prototype/rubyamf/vendor/plugins/rubyamf/app/mime_type.rb:3)
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 08:59:12) [GET]
+Sending data 
+Completed in 1ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+DEPRECATION WARNING: unverifiable_types is deprecated and has no effect. (called from /Users/tantaka/Dropbox/サーバーサイドベクトル化/prototype/rubyamf/vendor/plugins/rubyamf/app/mime_type.rb:3)
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 09:14:32) [POST]
+Sending data 
+Completed in 5ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 09:18:42) [POST]
+Sending data 
+Completed in 5ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 09:18:50) [POST]
+Sending data 
+Completed in 19ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 09:18:51) [POST]
+Sending data 
+Completed in 5ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 09:39:38) [POST]
+Sending data 
+Completed in 8ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 09:44:15) [POST]
+Sending data 
+Completed in 9ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 09:44:31) [POST]
+Sending data 
+Completed in 7ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 09:44:32) [POST]
+Sending data 
+Completed in 8ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 09:44:35) [POST]
+Sending data 
+Completed in 7ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 18:34:49) [POST]
+Sending data 
+Completed in 69ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 18:35:20) [POST]
+Sending data 
+Completed in 5ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 18:41:39) [POST]
+
+
+Processing MessagesController#hello (for 127.0.0.1 at 2010-02-01 18:41:39) [POST]
+  Parameters: {0=>"sup"}
+Completed in 1ms (DB: 0) |  [http://localhost/rubyamf/gateway]
+Sending data 
+Completed in 7ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-01 18:50:43) [POST]
+
+
+Processing MessagesController#hello (for 127.0.0.1 at 2010-02-01 18:50:43) [POST]
+  Parameters: {0=>"sup"}
+Completed in 1ms (DB: 0) |  [http://localhost/rubyamf/gateway]
+Sending data 
+Completed in 7ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+DEPRECATION WARNING: unverifiable_types is deprecated and has no effect. (called from /Users/tantaka/Dropbox/サーバーサイドベクトル化/prototype/rubyamf/vendor/plugins/rubyamf/app/mime_type.rb:3)
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-03 19:48:15) [POST]
+
+
+Processing MessagesController#hello (for 127.0.0.1 at 2010-02-03 19:48:15) [POST]
+  Parameters: {0=>"sup"}
+Completed in 1ms (DB: 0) |  [http://localhost/rubyamf/gateway]
+Sending data 
+Sending AMF data       /1/onResult null���� &Ruby World! [message from client: SUP]
+Completed in 6ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]
+
+
+Processing RubyamfController#gateway (for 127.0.0.1 at 2010-02-04 23:33:30) [POST]
+
+
+Processing MessagesController#hello (for 127.0.0.1 at 2010-02-04 23:33:30) [POST]
+  Parameters: {0=>"sup"}
+Completed in 1ms (DB: 0) |  [http://localhost/rubyamf/gateway]
+Sending data 
+Completed in 21ms (View: 0, DB: 0) | 200 OK [http://localhost/rubyamf/gateway]

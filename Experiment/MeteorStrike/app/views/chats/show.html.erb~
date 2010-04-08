@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @chat.name %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%=h @chat.message %>
+</p>
+
+
+<%= link_to 'Edit', edit_chat_path(@chat) %> |
+<%= link_to 'Back', chats_path %>

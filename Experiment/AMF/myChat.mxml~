@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+    creationComplete="init()" backgroundAlpha="1" backgroundColor="0xffffff">
+<mx:Script>
+<![CDATA[
+
+private var nc:NetConnection;
+private var ns:NetStream;
+private var dragging:Boolean = false;
+private var so:SharedObject;
+private function init():void{
+    log("init");
+    nc = new NetConnection();
+    //nc.client = new CustomClient();
+    nc.objectEncoding = ObjectEncoding.AMF0;
+    nc.connect("rtmp://localhost/TestRed5");
+    nc.addEventListener(NetStatusEvent.NET_STATUS,onNetStatus);
+    nc.addEventListener(SecurityErrorEvent.SECURITY_ERROR,onSecurityError);
+}
+
+private function onNetStatus(evt:NetStatusEvent):void {
+    log( "onNetstatus" );
+    switch(evt.info.code) {
+        case "NetConnection.Connect.Success":
+            so = SharedObject.getRemote("ball", nc.uri, true );
+            if( so ){
+                so.addEventListener( SyncEvent.SYNC , function( evt:SyncEvent ):void{
+                    if(dragging ) return;
+                    serverTxt.text = "x=> " + so.data.mousePosition.x + " , y=> " + so.data.mousePosition.y;
+                    logo.x = so.data.mousePosition.x;
+                    logo.y = so.data.mousePosition.y;
+                    nc.call('callback', new Responder(this.onResult));
+                });
+                so.connect(nc);
+            }
+            break;
+        case "NetConnection.Connect.Closed":
+            break;
+        case "NetConnection.Connect.Failed":
+            break;
+        case "NetConnection.Connect.Rejected":
+            break;
+            default:
+    }
+}
+private function onSecurityError(evt:SecurityErrorEvent):void {
+}
+
+private function onResult(result:String):void {
+    log('response受信:' + result);
+}
+
+private function startMove():void{
+    dragging = true;
+    logo.startDrag();
+}
+private function stopMove():void{
+    dragging = false;
+    logo.stopDrag();
+}
+private function onMouseMove():void{
+    if( dragging == true ){
+        localTxt.text = "x=> " + logo.x + " , y=> " + logo.y;
+        so.setProperty("mousePosition", {x: logo.x, y: logo.y} );
+    }
+}
+]]>
+</mx:Script>
+<mx:Image id="logo" x="51" y="111" width="192" height="176" source="logo.png"
+    mouseDown="startMove()" mouseUp="stopMove()" mouseMove="onMouseMove()"/>
+    <mx:Canvas x="10" y="10" width="255" height="72"
+        backgroundAlpha="0.5" backgroundColor="0xffffff"
+        dropShadowColor="0x000000" dropShadowEnabled="true"
+        cornerRadius="10" borderColor="0xffccff" borderStyle="solid" borderThickness="3">
+        <mx:Label x="10" y="10" text="Local:"/>
+        <mx:Label x="10" y="36" text="Server:"/>
+        <mx:Label x="68" y="10" id="localTxt" />
+        <mx:Label x="68" y="36" id="serverTxt" />
+    </mx:Canvas>
+
+</mx:Application>

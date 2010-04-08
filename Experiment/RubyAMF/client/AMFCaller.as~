@@ -1,0 +1,93 @@
+package
+{
+    import flash.utils.getTimer;
+    import flash.net.NetConnection;
+    import flash.net.ObjectEncoding;
+    import flash.events.Event;
+    import flash.events.NetStatusEvent;
+    import flash.events.IOErrorEvent;
+    import flash.events.AsyncErrorEvent;
+    import mx.utils.ObjectUtil;
+    import mx.rpc.Responder;
+
+    public class AMFCaller
+    {
+
+    /**
+     * gateway.phpのURL
+     */
+    public static const GATEWAY_URL:String = "http://localhost:3000/";
+
+    private var netConnection:NetConnection;
+
+    private function handleClick(e:Event):void
+    {
+        netConnection = new NetConnection();
+        //AMFプロトコルのバージョン
+        netConnection.objectEncoding = ObjectEncoding.AMF3;
+        netConnection.connect(GATEWAY_URL);
+
+        /**
+         * 詳細なステータスを所得するハンドラ
+         * 以下３つのハンドラはサンプルにはない。
+         * @see http://livedocs.adobe.com/flex/3_jp/langref/index.html
+         * NetStatusEvent
+         */
+        netConnection.addEventListener(NetStatusEvent.NET_STATUS,
+        function(e:NetStatusEvent):void
+        {
+            _trace(ObjectUtil.toString(e));
+        });
+
+        /**
+         * @see http://livedocs.adobe.com/flex/3_jp/langref/index.html
+         * IOErrorEvent
+         */
+        netConnection.addEventListener(IOErrorEvent.IO_ERROR,
+        function(e:IOErrorEvent):void
+        {
+            _trace(ObjectUtil.toString(e));
+        });
+
+        /**
+         * @see http://livedocs.adobe.com/flex/3_jp/langref/index.html
+         * ASYNC_ERROR
+         */
+        netConnection.addEventListener(AsyncErrorEvent.ASYNC_ERROR,
+        function(e:AsyncErrorEvent):void
+        {
+            _trace(ObjectUtil.toString(e));
+        });
+
+        /**
+          MethodTableに登録したサービスをコール
+          書式はサ－ビス名.メソッド名
+        */
+        netConnection.call("HelloWorld.say",
+        new Responder(handleResult, handleFault) , "sup");
+    }
+
+    /**
+     * 成功
+     */
+    private function handleResult(e:*):void
+    {
+        _trace(ObjectUtil.toString(e));
+    }
+
+    /**
+     * 失敗
+     */
+    private function handleFault(e:*):void
+    {
+        _trace(ObjectUtil.toString(e));
+    }
+
+    private function _trace(msg:String):void
+    {
+        var _msg:String = '[' + getTimer() + ']' + msg;
+        textArea.text = _msg ;
+        trace(_msg);
+    }
+}
+}
